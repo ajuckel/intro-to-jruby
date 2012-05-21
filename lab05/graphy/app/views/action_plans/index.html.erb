@@ -1,0 +1,26 @@
+<h2>Your Action Plan</h2>
+
+<div class="action_plan">
+  <% if @action_plan.empty? %>
+  <p>You haven't created an action plan yet.</p>
+  <% else %>
+    <ul>
+    <% @action_plan.each do |item| %>
+      <li><%= item.name %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<h2>Available Action Items</h2>
+<% @action_categories.each do |category| %>
+<div class="action_category">
+  <h3><%= category.name %></h3>
+  <ul>
+    <% category.action_items.each do |item| %>
+    <li><%= link_to item.name, add_action_item_path(item) %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Graphy Sample</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/cupertino/jquery-ui.css" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="all">
+      <div id="nav">
+        <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+      </div>
+      <div id="content">
+        <%= flash[:notice] %>
+
+        <%= flash[:alert] %>
+
+        <%= yield %>
+      </div>
+      <div id="sidebar">
+        <%= yield :sidebar %>
+      </div>
+    </div>
+  </body>
+</html>

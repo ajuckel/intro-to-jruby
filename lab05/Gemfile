@@ -1,0 +1,3 @@
+source "file://#{File.expand_path('../../../gem_dependencies', __FILE__)}"
+
+gem 'jruby-lint'

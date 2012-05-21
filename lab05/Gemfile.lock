@@ -1,0 +1,18 @@
+GEM
+  remote: file:/Users/awj/Desktop/jrubykickstart/flash/gem_dependencies/
+  specs:
+    bouncy-castle-java (1.5.0146.1)
+    jruby-lint (0.3.1)
+      jruby-openssl
+      nokogiri (>= 1.5.0.beta.4)
+      term-ansicolor
+    jruby-openssl (0.7.6.1)
+      bouncy-castle-java (>= 1.5.0146.1)
+    nokogiri (1.5.2-java)
+    term-ansicolor (1.0.7)
+
+PLATFORMS
+  java
+
+DEPENDENCIES
+  jruby-lint
