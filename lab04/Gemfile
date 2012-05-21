@@ -1,0 +1,5 @@
+source "file://#{File.expand_path('../../../gem_dependencies', __FILE__)}"
+# source :rubygems
+gem "activerecord", "3.2.3"
+gem "activerecord-jdbc-adapter", "1.2.2"
+gem "activerecord-jdbcderby-adapter", "1.2.2"
