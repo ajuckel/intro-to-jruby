@@ -1,0 +1,30 @@
+// Place all the styles related to the dashboard controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#weeks {
+    width: 30em;
+}
+
+.cohorts {
+    float:left;
+}
+.cohort {
+    padding: .3em;
+    width: 340px;
+    height: 150px;
+}
+
+.user-plot {
+    width: 260px;
+    height: 140px;
+    float: left;
+}
+
+.user-plot-legend {
+    width: 60px;
+    height: 140px;
+    float: right;
+    padding: 0;
+    margin: 0;
+}

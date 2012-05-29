@@ -1,0 +1,59 @@
+<div id="action_tracker">
+  <%= image_tag current_user.photo_url if current_user.photo_url %>
+  User ID: <%= current_user.id %>
+  <% if @action_plan.nil? %>
+    <%= link_to "Create Action Plan", new_user_action_plans_path %>
+  <% else %>
+    <div id="weeks">
+      <ul>
+        <% 1.upto(8).each do |week| %>
+        <li><a href="#weeks-<%= week %>">Week <%= week %></a></li>
+        <% end %>
+      </ul>
+      <% 1.upto(8).each do |week| %>
+        <% @action_plan.each do |item| %>
+          <div id="weeks-<%= week %>" class="action_item_rating">
+            <%= form_for([current_user, item], :remote => true) do |f| %>
+              <%= hidden_field_tag(:week_number, week) %>
+              <div>Week <%= week %>: Rate your week with <%= item.action_item.name %></div>
+              <% @metrics.each do |metric| %>
+                <div class="action_item_rating_metric">
+                  <%= render :partial => "shared/metric_rating", :locals => {
+                  :f => f,
+                  :metric => metric,
+                  :action_item => item,
+                  :rating => item.rating_for(metric, week)
+                  } %>
+                </div>
+              <% end %>
+              <div><%= submit_tag %></div>
+            <% end %>
+          </div>
+        <% end %>
+     <% end %>
+    </div>
+  <% end %>
+</div>
+<% unless current_user.friends.empty? %>
+<% content_for :sidebar do %>
+<div class="self">
+  <div>How are you doing?</div>
+  <div id="user-plot-<%= current_user.id %>" class="user-plot" data-user="<%= current_user.id %>">
+  </div>
+    <div id="user-plot-legend-<%= current_user.id %>" class="user-plot-legend" data-user="<%= current_user.id %>">
+    </div>
+</div>
+<div class="cohorts">
+  <div>How are your <em>cohorts</em> doing?</div>
+  <% current_user.friends.each do |cohort| %>
+  <div class="cohort">
+    <div class="user-name"><%= cohort.full_name %></div>
+    <div id="user-plot-<%= cohort.id %>" class="user-plot" data-user="<%= cohort.id %>">
+    </div>
+    <div id="user-plot-legend-<%= cohort.id %>" class="user-plot-legend" data-user="<%= cohort.id %>">
+    </div>
+  </div>
+  <% end %>
+</div>
+<% end %>
+<% end %>

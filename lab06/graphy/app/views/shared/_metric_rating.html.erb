@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <td width="40%"><%= metric.name %></td>
+    <td>
+      <% -3.upto(3).each do |value| %>
+        <input type="radio" name="user_action_item[<%= action_item.id %>][<%= metric.id %>][value]" value="<%= value %>" <%= (! rating.nil?) && (rating.value == value) ? "checked='checked'" : "" %> />
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>Pros:</td>
+    <td><textarea class="pros" name="user_action_item[<%= action_item.id %>][<%= metric.id %>][pros]"><%= rating.nil? ? "" : rating.pros %></textarea></td>
+  </tr>
+  <tr>
+    <td>Cons:</td>
+    <td><textarea class="cons" name="user_action_item[<%= action_item.id %>][<%= metric.id %>][cons]"><%= rating.nil? ? "" : rating.cons %></textarea></td>
+  </tr>
+</table>
